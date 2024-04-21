@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile">
+    <div class="user-info">
+        <h2>Информация о пользователе</h2>
+        <p>Имя: {{ user.name }}</p>
+        <p>Email: {{ user.email }}</p>
+    </div>
+    
+    <div class="activity-stats">
+        <h2>Статистика активности</h2>
+        <p>Количество постов: {{ user.posts.count }}</p>
+    </div>
+    
+    <div class="latest-posts">
+        <h2>Последние посты</h2>
+        {% for post in user.posts.all %}
+            <div class="post">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
